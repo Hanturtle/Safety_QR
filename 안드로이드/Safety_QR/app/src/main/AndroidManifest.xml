@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:hardwareAccelerated="true">
-        <activity android:name=".MainActivity"
+        <activity android:name=".ScanResult"
             android:theme="@style/Theme.AppCompat">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,6 +25,7 @@
 
 
         <activity android:name=".ScanQR"></activity>
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>

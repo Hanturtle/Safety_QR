@@ -11,6 +11,8 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 public class ScanQR extends AppCompatActivity {
+    int ScaneResultActivityId = 1001;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +32,15 @@ public class ScanQR extends AppCompatActivity {
                 // todo
             } else {
                 Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                //url 정보 넘겨주기(url 값 == result.getContents() ), 악성판별% 받아오기
+
+                /*int percent = 0;
+                //판별 결과 알려주는 화면 전환
+                Intent intent = new Intent(getApplicationContext(), ScanResult.class);
+                intent.putExtra("percent", percent);  //percent의 값을 부가 데이터로 넣기
+                startActivityForResult(intent, ScaneResultActivityId);    // 응답보내
+                finish(); //현재 액티비티 없애*/
+
                 // todo
             }
         } else {

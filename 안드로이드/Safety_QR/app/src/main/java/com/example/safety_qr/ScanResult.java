@@ -1,0 +1,77 @@
+package com.example.safety_qr;
+
+
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+
+public class ScanResult extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_result);
+
+        TextView detailtextView = findViewById(R.id.detail_textView);
+        TextView checktextView = findViewById(R.id.check_textView);
+        TextView urltextView = findViewById(R.id.url_textView);
+        LinearLayout backGround = (LinearLayout) findViewById(R.id.qr_result);
+
+
+        //여기에 url 값도 불러와 초기화해주세요
+        final String url = "http://www.naver.com";
+        urltextView.setText("접속하려는 url은...\n" + url);
+
+        //여기에 % 값 넘겨주는 변수 percent에 초기화해주세요..
+        int percent = 55;
+        /*Intent intent = new Intent();
+        int percent = intent.getIntExtra("percent");  */
+
+        detailtextView.setText("악성 url일 확률은  "+percent + "% 입니다.");
+
+        if(percent != 0){  //악성이라면
+            //배경 레드
+            backGround.setBackgroundColor(0xffff0000);
+
+            //check_textView '악성 url 입니다.'
+            checktextView.setText("악성 url 입니다.");
+
+            //확인 버튼 숨기기
+            Button button = findViewById(R.id.ok_button);
+            button.setVisibility(View.GONE);
+
+
+        }
+        else{   //안전한 url이라면
+            //배경 그린
+            backGround.setBackgroundColor(0xff00ff00);
+
+            //check_textView '안전한 url 입니다.'
+            checktextView.setText("안전한 url 입니다.");
+
+            //접속 버튼 눌렀을때 해당 액션 작동
+            Button button = (Button)findViewById(R.id.ok_button);
+            button.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view){
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    startActivity(intent);
+                }
+            });
+        }
+
+    }
+
+    public void Cancle(View view) {
+        Intent intent = new Intent(this, ScanQR.class);
+        startActivity(intent);
+        finish();
+    }
+
+}
