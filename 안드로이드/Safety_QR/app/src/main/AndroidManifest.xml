@@ -32,6 +32,7 @@
 
 
         <activity android:name=".ScanQR"></activity>
+        <activity android:name=".ScanResult"></activity>
     </application>
 
 </manifest>
