@@ -5,9 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import java.io.Closeable;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
+import java.net.UnknownHostException;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -21,9 +30,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /*
     public void goScan(View view) {
         Intent intent = new Intent(this, ScanQR.class);
         startActivity(intent);
-    }
+    }*/
+
 
 }
