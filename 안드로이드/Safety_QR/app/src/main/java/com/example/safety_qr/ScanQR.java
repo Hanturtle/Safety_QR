@@ -42,6 +42,10 @@ public class ScanQR extends AppCompatActivity {
                 finish(); //현재 액티비티 없애*/
 
                 // todo
+                //Client.class 인텐트 넘겨줌
+                Intent url = new Intent(this, ScanQR.class);
+                url.putExtra("url", result.getContents());
+
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
