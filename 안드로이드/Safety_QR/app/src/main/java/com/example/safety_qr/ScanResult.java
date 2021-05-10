@@ -28,8 +28,10 @@ public class ScanResult extends AppCompatActivity {
         Button ok_button = (Button)findViewById(R.id.ok_button);
 
 
-        //여기에 url 값도 불러와 초기화해주세요
-        final String url = "http://www.naver.com";
+        //url 가져옴
+        Intent urlIntent = getIntent();
+        final String url = urlIntent.getStringExtra("url");
+        //final String url = "http://www.naver.com";
         urltextView.setText(url);
 
         //여기에 % 값 넘겨주는 변수 percent에 초기화해주세요..

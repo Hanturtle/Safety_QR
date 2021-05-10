@@ -30,11 +30,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    /*
+
     public void goScan(View view) {
         Intent intent = new Intent(this, ScanQR.class);
         startActivity(intent);
-    }*/
+    }
+
+    // 테스트용
+    public void Client(View view) {
+        Intent intent = new Intent(this, Client.class);
+        startActivity(intent);
+    }
 
 
 }

@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.StrictMode;
 import android.util.Log;
+import android.view.View;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,18 +26,40 @@ public class Client extends AppCompatActivity {
     private DataOutputStream dos;
     private DataInputStream dis;
 
-    private String ip = "220.67.223.67";
+    private String ip = "127.0.0.1";
     private int port = 8080;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent urlIntent = getIntent();
+        System.out.println("실행");
+
+        int SDK_INT = android.os.Build.VERSION.SDK_INT;
+
+        if (SDK_INT > 8)
+        {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                    .permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
+
+        //Intent urlIntent = getIntent();
         //String url = urlIntent.getStringExtra("url");
+        //System.out.println("url :");
+        //System.out.println(url);
         String url = "http://www.naver.com";
-        connect(url);
+        //connect(url);
+        ScanResult();
+
 
     }
+    //임시용
+    public void ScanResult() {
+        Intent intent = new Intent(this, ScanResult.class);
+        intent.putExtra("url", "http://www.naver.com");
+        startActivity(intent);
+    }
+
 
     void connect(final String url){
         mHandler = new Handler();
@@ -68,6 +92,7 @@ public class Client extends AppCompatActivity {
                         int num, num2;
                         num = (int)dis.read();
                         num2 = (int)dis.read();
+                        System.out.println(num);
                         Log.w("서버에서 받아온 값","" + num);
                         Log.w("서버에서 받아온 값","" + num2);
 
@@ -79,6 +104,7 @@ public class Client extends AppCompatActivity {
             }
         };
         checkUpdate.start();
+
     }
 
 
