@@ -26,7 +26,7 @@ public class Client extends AppCompatActivity {
     private DataOutputStream dos;
     private DataInputStream dis;
 
-    private String ip = "127.0.0.1";
+    private String ip = "192.168.0.6";
     private int port = 8080;
 
     @Override
@@ -47,16 +47,16 @@ public class Client extends AppCompatActivity {
         //String url = urlIntent.getStringExtra("url");
         //System.out.println("url :");
         //System.out.println(url);
-        String url = "http://www.naver.com";
-        //connect(url);
-        ScanResult();
+        String url = "www.naver.com";
+        connect(url);
+        //ScanResult();
 
 
     }
     //임시용
     public void ScanResult() {
         Intent intent = new Intent(this, ScanResult.class);
-        intent.putExtra("url", "http://www.naver.com");
+        intent.putExtra("url", "naver.com");
         startActivity(intent);
     }
 
@@ -89,24 +89,16 @@ public class Client extends AppCompatActivity {
 
 
                     try {
-                        int num, num2;
-                        num = (int)dis.read();
-                        num2 = (int)dis.read();
-                        System.out.println(num);
-                        Log.w("서버에서 받아온 값","" + num);
-                        Log.w("서버에서 받아온 값","" + num2);
+                        int result;
+                        result = (int)dis.read();
+                        System.out.println(result);
+                        Log.w("서버에서 받아온 값","" + result);
 
                     } catch (IOException e){
                         e.printStackTrace();
                     }
-
-
             }
         };
         checkUpdate.start();
-
     }
-
-
-
 }
