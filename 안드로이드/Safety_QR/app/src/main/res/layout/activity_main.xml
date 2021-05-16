@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity" >
+    tools:context=".MainActivity">
 
     <LinearLayout
 
@@ -14,17 +14,117 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/ScanQR"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="false"
+                android:background="#00000000"
+                android:onClick="Client"
+                android:rotation="0"
+                android:rotationX="0"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/btn_scanqr" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/Search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="false"
+                android:background="#00000000"
+                android:onClick="goSearch"
+                android:rotation="0"
+                android:rotationX="0"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/btn_search" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            >
+
+            <ImageButton
+                android:id="@+id/History"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="false"
+                android:background="#00000000"
+                android:rotation="0"
+                android:rotationX="0"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/btn_history" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/Info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="false"
+                android:background="#00000000"
+                android:rotation="0"
+                android:rotationX="0"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/btn_info" />
+
+        </LinearLayout>
+<!--
         <Button
+            android:id="@+id/history"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/borderline_bottomleft"
             android:fontFamily="@font/nixgon"
+            android:gravity="center|center_vertical"
+            android:text="History"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="26sp" />
+
+        <Button
             android:id="@+id/scan_qr"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/borderline_topleft"
-            android:orientation="vertical"
+            android:fontFamily="@font/nixgon"
             android:gravity="center|center_vertical"
             android:onClick="Client"
-            android:text="scan QR"
+            android:orientation="vertical"
+            android:text="Scan QR"
+            android:textAllCaps="false"
             android:textColor="#FFFFFF"
             android:textSize="26sp" />
 
@@ -37,39 +137,179 @@
             android:fontFamily="@font/nixgon"
             android:gravity="center|center_vertical"
             android:onClick="goSearch"
-            android:text="search"
-            android:textColor="#FFFFFF"
-            android:textSize="26sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-
-        <Button
-            android:fontFamily="@font/nixgon"
-            android:background="@drawable/borderline_bottomleft"
-            android:id="@+id/history"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center|center_vertical"
-            android:text="history"
+            android:text="Search"
+            android:textAllCaps="false"
             android:textColor="#FFFFFF"
             android:textSize="26sp" />
 
         <Button
-            android:background="@drawable/borderline_bottomright"
-            android:fontFamily="@font/nixgon"
             android:id="@+id/option"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/borderline_bottomright"
+            android:fontFamily="@font/nixgon"
             android:gravity="center|center_vertical"
-            android:text="option"
+            android:text="Info"
+            android:textAllCaps="false"
             android:textColor="#FFFFFF"
             android:textSize="26sp" />
+
     </LinearLayout>
+</LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:background="#FFFFFF"
+                android:rotation="0"
+                android:rotationX="0"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/btn_scanqr" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:background="#FFFFFF"
+                android:rotation="0"
+                android:rotationX="0"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/btn_scanqr" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:background="#FFFFFF"
+                android:rotation="0"
+                android:rotationX="0"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/btn_scanqr" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:background="#FFFFFF"
+                android:rotation="0"
+                android:rotationX="0"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/btn_scanqr" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:background="#FFFFFF"
+                android:rotation="0"
+                android:rotationX="0"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/btn_scanqr" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:background="#FFFFFF"
+                android:rotation="0"
+                android:rotationX="0"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/btn_scanqr" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:background="#FFFFFF"
+                android:rotation="0"
+                android:rotationX="0"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/btn_scanqr" />
+                -->
+        </LinearLayout>
 </LinearLayout>

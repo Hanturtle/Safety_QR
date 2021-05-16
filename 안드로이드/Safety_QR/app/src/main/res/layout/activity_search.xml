@@ -10,7 +10,7 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="237dp"
-        android:paddingLeft="15dp"
+        android:gravity="center"
         android:paddingTop="150dp"
         android:text="검색할 URL을 입력하세요."
         android:textColor="#ffffffff"
