@@ -18,7 +18,7 @@
 [![](https://images.velog.io/images/hanturtle/post/813be5b7-e9c5-414b-85e5-5e51978147d4/image.png)](https://github.com/Hanturtle)  | [![](https://images.velog.io/images/hanturtle/post/57f1e5bc-0ef8-4137-aecf-be9b9377123e/image.png)](https://github.com/seungyun807)  | [![](https://images.velog.io/images/hanturtle/post/cd426609-9bb5-419c-927e-b8c509e712a4/image.png)](https://github.com/ssspmj1204)  | [![](https://images.velog.io/images/hanturtle/post/33e9eaba-b709-4389-ab24-5a5b42153cc3/image.png)](https://github.com/inhaaa) 
 --------- | --------- | --------- | ---------
 한지원 (팀장)| 김승윤 | 박민지 | 박인하
-**Github 관리, 안드로이드**<br>QR리더기개발<br>link 암호화| **서버**<br>QR리더기개발<br>DB 매핑 |**url 데이터 처리**<br>머신러닝을 활용한 데이터학습 | **DB, UI**<br>안드로이드 데이터베이스 관리<br>앱 디자인
+**Github 관리, 안드로이드**<br>QR 리더기 개발<br>안드로이드 프론트앤드| **백엔드**<br>소켓 통신<br>서버 |**웹 크롤링**<br>url 데이터 처리<br>소켓 통신 | **안드로이드 DB, 디자인**<br>안드로이드 데이터베이스 관리<br>앱 디자인
 
 <br><br>
 
@@ -27,9 +27,9 @@
 |:-----: | :-----: | :-----: |
 요구사항 분석 및 프로젝트 계획 | 2021-03-1주 ~ 2021-03-4주 | 계획서(주제 선정, 프로젝트 계획서 작성)
 설계 | 2021-04-1주 ~ 2021-04-2주 | DB설계서, UI/UX 디자인
-구현 | 2021-04-3주 ~ 2021-05-3주 | 소스 코드
-테스팅 | 2021-05-4주 | 시연 영상 및 발표 자료
-유지보수 | 2021-06-1주 ~ |
+구현 | 2021-04-3주 ~ 2021-05-4주 | 소스 코드
+테스팅 | 2021-05-5주 | 배포용 apk 파일
+유지보수 | 2021-06-1주 ~ | 시연 영상 및 발표 자료
 
 <br><br>
 
@@ -40,7 +40,140 @@
 
 <br>
 
-
-
+### 웹크롤링 & 소켓통신
+>visual studio code
 
 <br><br>
+## 기능
+- [QR스캔](#QR스캔)
+- [URL 검사](#URL-검사)
+- [악성 URL 판별](#악성-URL-판별)
+- [검색한 URL을 DB에 저장](#검색한-URL을-DB에-저장)
+- [앱 정보](#앱-정보)
+<br>
+
+### QR스캔
+QR스캔을 하여 URL 값을 읽어드린다.<br>
+<br><br>
+
+### URL 검사
+사용자가 입력한 값을 읽어 URL일 경우 악성 URL을 판별할 수 있게 하고, 입력한 값이 URL이 아닐경우 다시 입력하게한다.<br>
+![](https://images.velog.io/images/hanturtle/post/aa711040-15d2-42c5-a440-44e36f1fd202/image.png)<br>
+<br><br>
+
+### 악성 URL 판별
+QR스캔, URL 검사에서 받아온 URL의 악성 여부를 판별한다. 안전한 URL일 경우 OK버튼을 누르면 정상적인 작동을하고, 악셩일 경우 접속하지 못하게 차단한다.<br>
+![](https://images.velog.io/images/hanturtle/post/a3e46995-fb7b-4ccd-9b6f-93cf76591d19/image.png)<br>
+<br><br>
+
+### 검색한 URL을 DB에 저장
+악성 URL을 판별한 값들을 안드로이드 DB에 저장한다.<br>
+<br><br>
+
+### 앱 정보
+기본적인 앱 정보를 알려준다.<br>
+![](https://images.velog.io/images/hanturtle/post/f4f07789-3e8f-4670-83ae-0f6a8b9ae5b8/image.png)<br>
+<br><br><br>
+## 설계 및 구현
+
+<br><br><br>
+## Trouble Shooting
+### 서버 & 클라이언트
+<br><br><br>
+## 관련 학습 내용
+### URL 판별 알고리즘
+java에서 String에서 URL 추출하기
+``` java
+ public static String isURL(String str){
+ 	StringBuffer answer = new StringBuffer();
+        String regex ="[(http(s)?):\\/\\/(www\\.)?a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)";
+
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(str);
+
+        if(m.find()){
+            answer.append(m.group(0));
+        }
+
+        return answer.toString();
+    }
+```
+<br><br>
+### 소켓통신
+**스레드를 통해 서버 연결 요청**
+
+``` java
+ Thread checkUpdate = new Thread() {
+            public void run(){
+```
+**서버로 스캔한 URL 전달**
+``` java
+ try {
+	dos = new DataOutputStream(socket.getOutputStream());
+	dis = new DataInputStream(socket.getInputStream());
+	dos.writeUTF(url);
+} 
+```
+
+**서버로부터 결과값 수신**
+
+```  java
+result = (int)dis.read();
+```
+
+**서버 대기**
+
+``` python
+server = socket.socker(socket.AF_INET)
+server.bind((host,port))
+print("서버 연결됨")
+server.listen(1)
+print("서버 대기중")
+```
+
+**결과값 클라이언트로 송신**
+
+``` python
+if recv_data:
+	print("url: ", recv_data.decode())
+connection.send(send_data)
+```
+
+**ScaneResult로 결과값 전달**
+
+``` java
+public void ScanResult(String url) {
+	Intent intent = new Intent(this, ScanResult.class);
+	intent.putExtra("url", url);
+	intent.putExtra("result", result);
+	startActivity(intent);
+}
+```
+<br><br>
+### QR리더기 구현
+Zxing 라이브러리를 활용하여 QR리더기를 구현하고 필요한 정보(URL)를 얻어오기
+<br>
+**URL 값 얻어오기**
+``` java
+Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+```
+**Client.class로 인텐트 넘겨주기**
+``` java
+Intent url = new Intent(this, Client.class);
+url.putExtra("url", "http://www.naver.com");
+```
+<br><br>
+### VIRUSTOTAL 데이터 가져오기
+- Apikey : 로그인 후 apikey값을 얻어야 데이터를 얻을 수 있음
+- Resource : 검색할 리소스
+- url : 데이터 요청 사이트
+- mykey : 데이터를 가져오기 위한 자신의 키값이 있어야 함
+- MD5 : 검사할 URL의 해쉬값 
+- Requests.get() : 데이터 요청
+
+<br>
+데이터 값이 딕셔너리 형태로 저장되어있음. <br>
+데이터를 가공하여 키-값으로 출력하여 데이터 변수에 저장
+<br><br>
+
+
