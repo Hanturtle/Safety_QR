@@ -168,8 +168,6 @@ url.putExtra("url", "http://www.naver.com");
 - url : 데이터 요청 사이트
 - mykey : 데이터를 가져오기 위한 자신의 키값이 있어야 함
 - MD5 : 검사할 URL의 해쉬값 
-	- URL를 MD5로 변환할 코드는 연구중
-	- URL 데이터는 안드로이드에서 소켓통신을 받을 예정
 - Requests.get() : 데이터 요청
 
 <br>
