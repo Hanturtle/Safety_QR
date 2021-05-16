@@ -2,6 +2,7 @@ package com.example.safety_qr;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.service.autofill.FieldClassification;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,14 +29,43 @@ public class SearchQR extends AppCompatActivity {
 
     }
 
-    public void Search_URL(View view){
-        EditText get_url = findViewById(R.id.url_input);
-        //문자열로 받아오기
-        get_url.getText().toString();
+    //url인지 판별
+    public static String isURL(String str){
+        StringBuffer answer = new StringBuffer();
+        String regex ="[(http(s)?):\\/\\/(www\\.)?a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)";
 
-        //입력값 제대로 불러와지는지 테스트
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(str);
+
+        if(m.find()){
+            answer.append(m.group(0));
+        }
+
+        return answer.toString();
+    }
+
+
+
+    public void Search_URL(View view){
+        //문자열로 받아오기
+        EditText get_url = findViewById(R.id.url_input);
+        String URL = get_url.getText().toString();
+
+        //입력값이 URL인지 판별
+        URL = isURL(URL);
+
+
+
+        //정확한 값이 나오는지 테스트
         TextView set_url = findViewById(R.id.url_test);
-        set_url.setText(get_url.getText());
+
+        //URL이 아니라면
+        if(URL.isEmpty()) {
+            set_url.setText(get_url.getText()+"는 잘못된 URL입니다.");
+        }
+        else{  //URL이라면
+            set_url.setText(URL);
+        }
     }
 
 
