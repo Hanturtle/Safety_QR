@@ -33,6 +33,7 @@
         <activity android:name=".Client"></activity>
         <activity android:name=".ScanQR"></activity>
         <activity android:name=".ScanResult"></activity>
+        <activity android:name=".SearchQR"></activity>
     </application>
 
 </manifest>

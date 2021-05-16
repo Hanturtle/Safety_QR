@@ -29,13 +29,14 @@
             android:textSize="26sp" />
 
         <Button
-            android:background="@drawable/borderline_topright"
-            android:fontFamily="@font/nixgon"
             android:id="@+id/search"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/borderline_topright"
+            android:fontFamily="@font/nixgon"
             android:gravity="center|center_vertical"
+            android:onClick="goSearch"
             android:text="search"
             android:textColor="#FFFFFF"
             android:textSize="26sp" />

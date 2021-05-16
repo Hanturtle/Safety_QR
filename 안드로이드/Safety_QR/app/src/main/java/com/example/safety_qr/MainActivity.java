@@ -36,6 +36,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void goSearch(View view) {
+        Intent intent = new Intent(this, SearchQR.class);
+        startActivity(intent);
+    }
+
     // 테스트용
     public void Client(View view) {
         Intent intent = new Intent(this, Client.class);
