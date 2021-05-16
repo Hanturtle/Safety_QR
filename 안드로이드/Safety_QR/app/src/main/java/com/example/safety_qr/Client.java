@@ -37,16 +37,8 @@ public class Client extends AppCompatActivity {
         String url = urlIntent.getStringExtra("url");
         //소켓 실
         connect(url);
-<<<<<<< HEAD
-
-        //ScanResult(url);
-=======
-        ScanResult();
->>>>>>> 29bdc1083aa1ca385c61d2fadf3c598f877c9439
-
-
     }
-    //임시용
+
     public void ScanResult(String url) {
         Intent intent = new Intent(this, ScanResult.class);
         intent.putExtra("url", url);
