@@ -23,7 +23,7 @@
             android:background="@drawable/borderline_topleft"
             android:orientation="vertical"
             android:gravity="center|center_vertical"
-            android:onClick="goScan"
+            android:onClick="Client"
             android:text="scan QR"
             android:textColor="#FFFFFF"
             android:textSize="26sp" />
