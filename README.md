@@ -52,25 +52,25 @@
 <br>
 
 ### QR스캔
-QR스캔을 하여 URL 값을 읽어드린다.
+QR스캔을 하여 URL 값을 읽어드린다.<br>
 <br><br>
 
 ### URL 검사
-사용자가 입력한 값을 읽어 URL일 경우 악성 URL을 판별할 수 있게 하고, 입력한 값이 URL이 아닐경우 다시 입력하게한다.
+사용자가 입력한 값을 읽어 URL일 경우 악성 URL을 판별할 수 있게 하고, 입력한 값이 URL이 아닐경우 다시 입력하게한다.<br>
 ![](https://images.velog.io/images/hanturtle/post/aa711040-15d2-42c5-a440-44e36f1fd202/image.png)<br>
 <br><br>
 
 ### 악성 URL 판별
-QR스캔, URL 검사에서 받아온 URL의 악성 여부를 판별한다. 안전한 URL일 경우 OK버튼을 누르면 정상적인 작동을하고, 악셩일 경우 접속하지 못하게 차단한다.
+QR스캔, URL 검사에서 받아온 URL의 악성 여부를 판별한다. 안전한 URL일 경우 OK버튼을 누르면 정상적인 작동을하고, 악셩일 경우 접속하지 못하게 차단한다.<br>
 ![](https://images.velog.io/images/hanturtle/post/a3e46995-fb7b-4ccd-9b6f-93cf76591d19/image.png)<br>
 <br><br>
 
 ### 검색한 URL을 DB에 저장
-악성 URL을 판별한 값들을 안드로이드 DB에 저장한다.
+악성 URL을 판별한 값들을 안드로이드 DB에 저장한다.<br>
 <br><br>
 
 ### 앱 정보
-기본적인 앱 정보를 알려준다.
+기본적인 앱 정보를 알려준다.<br>
 ![](https://images.velog.io/images/hanturtle/post/f4f07789-3e8f-4670-83ae-0f6a8b9ae5b8/image.png)<br>
 <br><br><br>
 ## 설계 및 구현
