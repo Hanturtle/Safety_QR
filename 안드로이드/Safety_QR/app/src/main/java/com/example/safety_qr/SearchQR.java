@@ -1,6 +1,7 @@
 package com.example.safety_qr;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.service.autofill.FieldClassification;
 import android.view.View;
@@ -65,6 +66,10 @@ public class SearchQR extends AppCompatActivity {
         }
         else{  //URL이라면
             set_url.setText(URL);
+
+            //Client.class 인텐트 넘겨줌
+            Intent url = new Intent(this, SearchQR.class);
+            url.putExtra("url", URL);
         }
     }
 
