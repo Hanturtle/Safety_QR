@@ -40,7 +40,8 @@
 
 <br>
 
-### 또 뭐있어
+### 웹크롤링 & 소켓통신
+>visual studio code
 
 <br><br>
 ## 기능
