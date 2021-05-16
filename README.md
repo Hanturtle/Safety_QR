@@ -18,7 +18,7 @@
 [![](https://images.velog.io/images/hanturtle/post/813be5b7-e9c5-414b-85e5-5e51978147d4/image.png)](https://github.com/Hanturtle)  | [![](https://images.velog.io/images/hanturtle/post/57f1e5bc-0ef8-4137-aecf-be9b9377123e/image.png)](https://github.com/seungyun807)  | [![](https://images.velog.io/images/hanturtle/post/cd426609-9bb5-419c-927e-b8c509e712a4/image.png)](https://github.com/ssspmj1204)  | [![](https://images.velog.io/images/hanturtle/post/33e9eaba-b709-4389-ab24-5a5b42153cc3/image.png)](https://github.com/inhaaa) 
 --------- | --------- | --------- | ---------
 한지원 (팀장)| 김승윤 | 박민지 | 박인하
-**Github 관리, 안드로이드**<br>QR 리더기 개발<br>안드로이드 프론트앤드| **서버**<br>소켓 통신 |**웹 크롤링**<br>url 데이터 처리 | **안드로이드 DB, 디자인**<br>안드로이드 데이터베이스 관리<br>앱 디자인
+**Github 관리, 안드로이드**<br>QR 리더기 개발<br>안드로이드 프론트앤드| **백엔드**<br>소켓 통신<br>서버 |**웹 크롤링**<br>url 데이터 처리<br>소켓  | **안드로이드 DB, 디자인**<br>안드로이드 데이터베이스 관리<br>앱 디자인
 
 <br><br>
 
