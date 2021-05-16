@@ -130,7 +130,7 @@ server.listen(1)
 print("서버 대기중")
 ```
 
-** 결과값 클라이언트로 송신 **
+**결과값 클라이언트로 송신**
 
 ``` python
 if recv_data:
@@ -150,7 +150,8 @@ public void ScanResult(String url) {
 ```
 <br><br>
 ### QR리더기 구현
-Zxing 라이브러리를 활용하여 QR리더기를 구현하고 필요한 정보(URL)를 얻어오기<br>
+Zxing 라이브러리를 활용하여 QR리더기를 구현하고 필요한 정보(URL)를 얻어오기
+<br>
 **URL 값 얻어오기**
 ``` java
 Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
