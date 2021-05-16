@@ -49,7 +49,7 @@ public class Client extends AppCompatActivity {
         //System.out.println(url);
         String url = "www.naver.com";
         connect(url);
-        //ScanResult();
+        ScanResult();
 
 
     }

@@ -45,7 +45,7 @@ public class ScanQR extends AppCompatActivity {
 
                 // todo
                 //Client.class 인텐트 넘겨줌
-                Intent url = new Intent(this, ScanQR.class);
+                Intent url = new Intent(this, Client.class);
                 url.putExtra("url", "http://www.naver.com");
 
             }

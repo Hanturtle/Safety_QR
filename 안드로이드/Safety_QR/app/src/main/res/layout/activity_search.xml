@@ -2,14 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:background="#17375e"
     android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="237dp"
+        android:paddingLeft="15dp"
+        android:paddingTop="150dp"
+        android:text="검색할 URL을 입력하세요."
+        android:textColor="#ffffffff"
+        android:textSize="30sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
 
         <EditText
             android:id="@+id/url_input"
@@ -18,17 +30,18 @@
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textUri"
-            android:paddingTop="200dp"
-            android:hint="검색할 URL을 입력하세요." />
+            android:paddingTop="20dp"
+            android:backgroundTint="#ffffffff"
+            android:textColor="#ffffffff" />
 
-        <ImageButton
-            android:id="@+id/search_button"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="59dp"
             android:layout_weight="1"
             android:onClick="Search_URL"
-            android:paddingTop="200dp"
-            app:srcCompat="@android:drawable/ic_menu_search" />
+            app:srcCompat="@drawable/search" />
+
     </LinearLayout>
 
     <TextView
@@ -37,5 +50,9 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:paddingTop="50dp"
-        android:text="TextView" />
+        android:text="test >> URL or text"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:gravity="center"
+        android:textColor="#ffffffff"/>
 </LinearLayout>
