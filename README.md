@@ -74,9 +74,97 @@ QR스캔, URL 검사에서 받아온 URL의 악성 여부를 판별한다. 안�
 ![](https://images.velog.io/images/hanturtle/post/f4f07789-3e8f-4670-83ae-0f6a8b9ae5b8/image.png)<br>
 <br><br><br>
 ## 설계 및 구현
+
 <br><br><br>
 ## Trouble Shooting
+### 서버 & 클라이언트
 <br><br><br>
 ## 관련 학습 내용
-<br><br><br>
+### URL 판별 알고리즘
+java에서 String에서 URL 추출하기
+``` java
+ public static String isURL(String str){
+ 	StringBuffer answer = new StringBuffer();
+        String regex ="[(http(s)?):\\/\\/(www\\.)?a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)";
+
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(str);
+
+        if(m.find()){
+            answer.append(m.group(0));
+        }
+
+        return answer.toString();
+    }
+```
+<br><br>
+### 소켓통신
+** 스레드를 통해 서버 연결 요청 **
+``` java
+ Thread checkUpdate = new Thread() {
+            public void run(){
+```
+** 서버로 스캔한 URL 전달 **
+``` java
+ try {
+	dos = new DataOutputStream(socket.getOutputStream());
+	dis = new DataInputStream(socket.getInputStream());
+	dos.writeUTF(url);
+} 
+```
+** 서버로부터 결과값 수신 **
+```  java
+result = (int)dis.read();
+```
+** 서버 대기 **
+``` python
+server = socket.socker(socket.AF_INET)
+server.bind((host,port))
+print("서버 연결됨")
+server.listen(1)
+print("서버 대기중")
+```
+** 결과값 클라이언트로 송신 **
+``` python
+if recv_data:
+	print("url: ", recv_data.decode())
+connection.send(send_data)
+```
+** ScaneResult로 결과값 전달 **
+``` java
+public void ScanResult(String url) {
+	Intent intent = new Intent(this, ScanResult.class);
+	intent.putExtra("url", url);
+	intent.putExtra("result", result);
+	startActivity(intent);
+}
+```
+<br><br>
+### QR리더기 구현
+Zxing 라이브러리를 활용하여 QR리더기를 구현하고 필요한 정보(URL)를 얻어오기<br>
+** URL 값 얻어오기 **
+``` java
+Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+```
+** Client.class로 인텐트 넘겨주기 **
+``` java
+Intent url = new Intent(this, Client.class);
+url.putExtra("url", "http://www.naver.com");
+```
+<br><br>
+### VIRUSTOTAL 데이터 가져오기
+- Apikey : 로그인 후 apikey값을 얻어야 데이터를 얻을 수 있음
+- Resource : 검색할 리소스
+- url : 데이터 요청 사이트
+- mykey : 데이터를 가져오기 위한 자신의 키값이 있어야 함
+- MD5 : 검사할 URL의 해쉬값 
+	- URL를 MD5로 변환할 코드는 연구중
+	- URL 데이터는 안드로이드에서 소켓통신을 받을 예정
+- Requests.get() : 데이터 요청
+
+<br>
+데이터 값이 딕셔너리 형태로 저장되어있음. <br>
+데이터를 가공하여 키-값으로 출력하여 데이터 변수에 저장
+<br><br>
+
 
