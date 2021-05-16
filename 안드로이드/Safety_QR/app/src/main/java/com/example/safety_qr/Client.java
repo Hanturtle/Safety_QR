@@ -28,41 +28,32 @@ public class Client extends AppCompatActivity {
 
     private String ip = "192.168.0.6";
     private int port = 8080;
-
+    int result;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         System.out.println("실행");
-
-        int SDK_INT = android.os.Build.VERSION.SDK_INT;
-
-        if (SDK_INT > 8)
-        {
-            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
-                    .permitAll().build();
-            StrictMode.setThreadPolicy(policy);
-        }
-
-        //Intent urlIntent = getIntent();
-        //String url = urlIntent.getStringExtra("url");
-        //System.out.println("url :");
-        //System.out.println(url);
-        String url = "www.naver.com";
+        Intent urlIntent = getIntent();
+        String url = urlIntent.getStringExtra("url");
+        //소켓 실
         connect(url);
-        //ScanResult();
+
+        //ScanResult(url);
 
 
     }
     //임시용
-    public void ScanResult() {
+    public void ScanResult(String url) {
         Intent intent = new Intent(this, ScanResult.class);
-        intent.putExtra("url", "naver.com");
+        intent.putExtra("url", url);
+        intent.putExtra("result", result);
         startActivity(intent);
     }
 
 
     void connect(final String url){
         mHandler = new Handler();
+
         Log.w("connect", "연결 하는중");
         // 받아오기
         Thread checkUpdate = new Thread() {
@@ -89,16 +80,25 @@ public class Client extends AppCompatActivity {
 
 
                     try {
-                        int result;
+                        //통신 성공
                         result = (int)dis.read();
                         System.out.println(result);
                         Log.w("서버에서 받아온 값","" + result);
-
+                        //ScanResult로 값 넘겨줌
+                        ScanResult(url);
                     } catch (IOException e){
                         e.printStackTrace();
                     }
+
             }
+
         };
+
         checkUpdate.start();
+        finish();
+
+
     }
+
+
 }

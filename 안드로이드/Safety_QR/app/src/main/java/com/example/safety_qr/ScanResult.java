@@ -30,15 +30,14 @@ public class ScanResult extends AppCompatActivity {
 
         //url 가져옴
         Intent urlIntent = getIntent();
+        // 1, 0 악성유무값 받아옴
+        final int percent = urlIntent.getIntExtra("result", 0);
         final String url = urlIntent.getStringExtra("url");
         //final String url = "http://www.naver.com";
         urltextView.setText(url);
 
         //여기에 % 값 넘겨주는 변수 percent에 초기화해주세요..
-        int percent = 55;
-        /*Intent intent = new Intent();
-        int percent = intent.getIntExtra("percent");  */
-
+        //Intent intent = new Intent();
        // detailtextView.setText(percent);
 
         if(percent != 0){  //악성이라면
