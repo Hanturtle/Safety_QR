@@ -99,14 +99,13 @@ java에서 String에서 URL 추출하기
 ```
 <br><br>
 ### 소켓통신
-
-** 스레드를 통해 서버 연결 요청 **
+**스레드를 통해 서버 연결 요청**
 
 ``` java
  Thread checkUpdate = new Thread() {
             public void run(){
 ```
-** 서버로 스캔한 URL 전달 **
+**서버로 스캔한 URL 전달**
 ``` java
  try {
 	dos = new DataOutputStream(socket.getOutputStream());
@@ -115,13 +114,13 @@ java에서 String에서 URL 추출하기
 } 
 ```
 
-** 서버로부터 결과값 수신 **
+**서버로부터 결과값 수신**
 
 ```  java
 result = (int)dis.read();
 ```
 
-** 서버 대기 **
+**서버 대기**
 
 ``` python
 server = socket.socker(socket.AF_INET)
@@ -139,7 +138,7 @@ if recv_data:
 connection.send(send_data)
 ```
 
-** ScaneResult로 결과값 전달 **
+**ScaneResult로 결과값 전달**
 
 ``` java
 public void ScanResult(String url) {
@@ -152,11 +151,11 @@ public void ScanResult(String url) {
 <br><br>
 ### QR리더기 구현
 Zxing 라이브러리를 활용하여 QR리더기를 구현하고 필요한 정보(URL)를 얻어오기<br>
-** URL 값 얻어오기 **
+**URL 값 얻어오기**
 ``` java
 Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
 ```
-** Client.class로 인텐트 넘겨주기 **
+**Client.class로 인텐트 넘겨주기**
 ``` java
 Intent url = new Intent(this, Client.class);
 url.putExtra("url", "http://www.naver.com");
