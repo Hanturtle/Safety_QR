@@ -99,7 +99,9 @@ java에서 String에서 URL 추출하기
 ```
 <br><br>
 ### 소켓통신
+
 ** 스레드를 통해 서버 연결 요청 **
+
 ``` java
  Thread checkUpdate = new Thread() {
             public void run(){
@@ -112,11 +114,15 @@ java에서 String에서 URL 추출하기
 	dos.writeUTF(url);
 } 
 ```
+
 ** 서버로부터 결과값 수신 **
+
 ```  java
 result = (int)dis.read();
 ```
+
 ** 서버 대기 **
+
 ``` python
 server = socket.socker(socket.AF_INET)
 server.bind((host,port))
@@ -124,13 +130,17 @@ print("서버 연결됨")
 server.listen(1)
 print("서버 대기중")
 ```
+
 ** 결과값 클라이언트로 송신 **
+
 ``` python
 if recv_data:
 	print("url: ", recv_data.decode())
 connection.send(send_data)
 ```
+
 ** ScaneResult로 결과값 전달 **
+
 ``` java
 public void ScanResult(String url) {
 	Intent intent = new Intent(this, ScanResult.class);
