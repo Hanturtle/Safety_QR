@@ -33,7 +33,7 @@ public class ScanResult extends AppCompatActivity {
         urltextView.setText(url);
 
         //여기에 % 값 넘겨주는 변수 percent에 초기화해주세요..
-        int percent = 0;
+        int percent = 55;
         /*Intent intent = new Intent();
         int percent = intent.getIntExtra("percent");  */
 
