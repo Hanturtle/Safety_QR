@@ -18,7 +18,7 @@
 [![](https://images.velog.io/images/hanturtle/post/813be5b7-e9c5-414b-85e5-5e51978147d4/image.png)](https://github.com/Hanturtle)  | [![](https://images.velog.io/images/hanturtle/post/57f1e5bc-0ef8-4137-aecf-be9b9377123e/image.png)](https://github.com/seungyun807)  | [![](https://images.velog.io/images/hanturtle/post/cd426609-9bb5-419c-927e-b8c509e712a4/image.png)](https://github.com/ssspmj1204)  | [![](https://images.velog.io/images/hanturtle/post/33e9eaba-b709-4389-ab24-5a5b42153cc3/image.png)](https://github.com/inhaaa) 
 --------- | --------- | --------- | ---------
 한지원 (팀장)| 김승윤 | 박민지 | 박인하
-**Github 관리, 안드로이드**<br>QR리더기개발<br>link 암호화| **서버**<br>QR리더기개발<br>DB 매핑 |**url 데이터 처리**<br>머신러닝을 활용한 데이터학습 | **DB, UI**<br>안드로이드 데이터베이스 관리<br>앱 디자인
+**Github 관리, 안드로이드**<br>QR 리더기 개발<br>안드로이드 프론트앤드| **서버**<br>소켓 통신 |**웹 크롤링**<br>url 데이터 처리 | **안드로이드 DB, 디자인**<br>안드로이드 데이터베이스 관리<br>앱 디자인
 
 <br><br>
 
@@ -27,9 +27,9 @@
 |:-----: | :-----: | :-----: |
 요구사항 분석 및 프로젝트 계획 | 2021-03-1주 ~ 2021-03-4주 | 계획서(주제 선정, 프로젝트 계획서 작성)
 설계 | 2021-04-1주 ~ 2021-04-2주 | DB설계서, UI/UX 디자인
-구현 | 2021-04-3주 ~ 2021-05-3주 | 소스 코드
-테스팅 | 2021-05-4주 | 시연 영상 및 발표 자료
-유지보수 | 2021-06-1주 ~ |
+구현 | 2021-04-3주 ~ 2021-05-4주 | 소스 코드
+테스팅 | 2021-05-5주 | 배포용 apk 파일
+유지보수 | 2021-06-1주 ~ | 시연 영상 및 발표 자료
 
 <br><br>
 
@@ -40,7 +40,43 @@
 
 <br>
 
-
-
+### 또 뭐있어
 
 <br><br>
+## 기능
+- QR스캔
+- URL 검사
+- 악성 URL 판별
+- 검색한 URL을 DB에 저장
+- 앱 정보
+<br>
+
+### QR스캔
+QR스캔을 하여 URL 값을 읽어드린다.
+<br><br>
+
+### URL 검사
+사용자가 입력한 값을 읽어 URL일 경우 악성 URL을 판별할 수 있게 하고, 입력한 값이 URL이 아닐경우 다시 입력하게한다.
+![](https://images.velog.io/images/hanturtle/post/aa711040-15d2-42c5-a440-44e36f1fd202/image.png)<br>
+<br><br>
+
+### 악성 URL 판별
+QR스캔, URL 검사에서 받아온 URL의 악성 여부를 판별한다. 안전한 URL일 경우 OK버튼을 누르면 정상적인 작동을하고, 악셩일 경우 접속하지 못하게 차단한다.
+![](https://images.velog.io/images/hanturtle/post/a3e46995-fb7b-4ccd-9b6f-93cf76591d19/image.png)<br>
+<br><br>
+
+### 검색한 URL을 DB에 저장
+악성 URL을 판별한 값들을 안드로이드 DB에 저장한다.
+<br><br>
+
+### 앱 정보
+기본적인 앱 정보를 알려준다.
+![](https://images.velog.io/images/hanturtle/post/f4f07789-3e8f-4670-83ae-0f6a8b9ae5b8/image.png)<br>
+<br><br><br>
+## 설계 및 구현
+<br><br><br>
+## Trouble Shooting
+<br><br><br>
+## 관련 학습 내용
+<br><br><br>
+
