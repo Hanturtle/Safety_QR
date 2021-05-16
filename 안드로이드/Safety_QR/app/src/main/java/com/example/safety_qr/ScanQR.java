@@ -20,6 +20,8 @@ public class ScanQR extends AppCompatActivity {
         new IntentIntegrator(this).initiateScan();
         IntentIntegrator integrator = new IntentIntegrator(this);
         integrator.setOrientationLocked(false);
+        Intent url = new Intent(this, ScanQR.class);
+        url.putExtra("url", "http://www.naver.com");
     }
 
     @Override
@@ -43,8 +45,8 @@ public class ScanQR extends AppCompatActivity {
 
                 // todo
                 //Client.class 인텐트 넘겨줌
-                Intent url = new Intent(this, ScanQR.class);
-                url.putExtra("url", result.getContents());
+                Intent url = new Intent(this, Client.class);
+                url.putExtra("url", "http://www.naver.com");
 
             }
         } else {
