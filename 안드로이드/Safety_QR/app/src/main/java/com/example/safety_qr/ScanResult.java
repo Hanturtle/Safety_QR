@@ -32,9 +32,8 @@ public class ScanResult extends AppCompatActivity {
         Intent urlIntent = getIntent();
         // 1, 0 악성유무값 받아옴
         final int percent = urlIntent.getIntExtra("result", 1);
-        //final String url = urlIntent.getStringExtra("url");
-        //final String url = "http://198.23.207.82/mad/men.exe";
         final String url = urlIntent.getStringExtra("url");
+        //final String url = "http://198.23.207.82/mad/men.exe";
         urltextView.setText(url);
 
         //여기에 % 값 넘겨주는 변수 percent에 초기화해주세요..
@@ -71,9 +70,17 @@ public class ScanResult extends AppCompatActivity {
             ok_button.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view){
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                    startActivity(intent);
-                    finish();
+                    if(!url.contains("http")){
+                        String http = "http://";
+                        http = http.concat(url);
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(http));
+                        startActivity(intent);
+                    }
+                    else{
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                        startActivity(intent);
+                    } finish();
+
                 }
             });
         }

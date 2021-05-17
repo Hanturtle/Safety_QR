@@ -9,7 +9,6 @@ def data_Check(malicious):
         return 0
     else:
         return 1
-
 def check(recv_data):
 
     url = 'https://www.virustotal.com/vtapi/v2/url/report'  
