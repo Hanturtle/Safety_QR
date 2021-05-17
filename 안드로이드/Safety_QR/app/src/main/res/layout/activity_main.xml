@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="false"
                 android:background="#00000000"
-                android:onClick="Client"
+                android:onClick="goScan"
                 android:rotation="0"
                 android:rotationX="0"
                 android:scaleType="centerCrop"
