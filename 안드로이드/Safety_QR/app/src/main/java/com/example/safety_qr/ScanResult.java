@@ -34,7 +34,7 @@ public class ScanResult extends AppCompatActivity {
         final int percent = urlIntent.getIntExtra("result", 1);
         //final String url = urlIntent.getStringExtra("url");
         //final String url = "http://198.23.207.82/mad/men.exe";
-        final String url = urlIntent.getStringExtra("http://www.naver.com");
+        final String url = urlIntent.getStringExtra("url");
         urltextView.setText(url);
 
         //여기에 % 값 넘겨주는 변수 percent에 초기화해주세요..
