@@ -22,8 +22,10 @@ def check(recv_data):
     response = requests.get(url, params=params)
 
     data = response.json() 
-    malicious = data['positives']
-    print(malicious)
+    try:
+        malicious = data['positives']
+    except KeyError:
+        malicious =0
 
     answer = data_Check(malicious)
     print(answer)
