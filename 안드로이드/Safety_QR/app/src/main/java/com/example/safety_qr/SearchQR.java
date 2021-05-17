@@ -71,6 +71,7 @@ public class SearchQR extends AppCompatActivity {
             Intent url = new Intent(this, Client.class);
             url.putExtra("url", URL);
             startActivity(url);
+            finish();
         }
     }
 
