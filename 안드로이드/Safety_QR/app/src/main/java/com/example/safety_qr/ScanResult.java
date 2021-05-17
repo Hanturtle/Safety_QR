@@ -72,6 +72,7 @@ public class ScanResult extends AppCompatActivity {
                 public void onClick(View view){
                     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                     startActivity(intent);
+                    finish();
                 }
             });
         }
