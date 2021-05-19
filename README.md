@@ -177,6 +177,7 @@ url.putExtra("url", "http://www.naver.com");
 - Requests.get() : 데이터 요청
 
 <br>
+
 **데이터 요청**
 ``` Python
 import requests 
@@ -185,6 +186,7 @@ params = {'apikey': '<apikey>', 'resource':'<resource>'}
 response = requests.get(url, params=params) 
 print(response.json())
 ```
+
 <br><br>
 
 
