@@ -177,8 +177,14 @@ url.putExtra("url", "http://www.naver.com");
 - Requests.get() : 데이터 요청
 
 <br>
-데이터 값이 딕셔너리 형태로 저장되어있음. <br>
-데이터를 가공하여 키-값으로 출력하여 데이터 변수에 저장
+**데이터 요청**
+``` Python
+import requests 
+url = 'https://www.virustotal.com/vtapi/v2/url/report' 
+params = {'apikey': '<apikey>', 'resource':'<resource>'} 
+response = requests.get(url, params=params) 
+print(response.json())
+```
 <br><br>
 
 
