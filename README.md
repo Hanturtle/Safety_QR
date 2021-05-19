@@ -76,6 +76,16 @@ QR스캔, URL 검사에서 받아온 URL의 악성 여부를 판별한다. 안�
 <br><br><br>
 ## 설계 및 구현
 
+Class | Contents
+|:-----: | ------------------------------| 
+Client | 
+IntroActivity | - 앱 실행시 보여주는 화면 구현
+MainActivity | - QR코드 스캔, URL 검색, 스캔하고 검색한 URL의 데이터를 보여주는 History, 앱의 사용정보 등을 담고있는 information 버튼 구현
+ScanQR | - Zxing 라이브러리를 활용하여 큐알 코드를 스캔하여 URL 정보를 얻어온다.
+SearchQR | - 사용자가 임의의 문자열을 입력하면 URL인지 판별 후, URL이라면 악성여부를 판별한다.
+ScanResult |  - 스캔한 큐알에서 얻어온 URL과 사용자가 임의로 입력한 URL의 결과를 악성인지 정상적인 URL인지 알려준다.
+
+
 <br><br><br>
 ## Trouble Shooting
 <br><br>
