@@ -86,14 +86,7 @@ ScanResult |  스캔한 큐알에서 얻어온 URL과 사용자가 임의로 입
 
 
 <br><br><br>
-## Trouble Shooting
-<br><br>
-### 바이러스 토탈에 등록되지 않은 URL일경우
-<br><br>
-### http로 URL인텐트 전달
-<br><br>
-### 서버 & 클라이언트
-<br><br><br>
+
 ## 관련 학습 내용
 ### URL 판별 알고리즘
 java에서 String에서 URL 추출하기
