@@ -76,15 +76,17 @@ QR스캔, URL 검사에서 받아온 URL의 악성 여부를 판별한다. 안�
 <br><br><br>
 ## 설계 및 구현
 
+Class | Contents
+|:-----: | ------------------------------| 
+IntroActivity | 앱 실행시 보여주는 화면 구현
+MainActivity | QR코드 스캔, URL 검색, 스캔하고 검색한 URL의 데이터를 보여주는 History, 앱의 사용정보 등을 담고있는 information 버튼 구현
+ScanQR | Zxing 라이브러리를 활용하여 큐알 코드를 스캔하여 URL 정보를 얻어온다.
+SearchQR | 사용자가 임의의 문자열을 입력하면 URL인지 판별 후, URL이라면 악성여부를 판별한다.
+ScanResult |  스캔한 큐알에서 얻어온 URL과 사용자가 임의로 입력한 URL의 결과를 악성인지 정상적인 URL인지 알려준다.
+
+
 <br><br><br>
-## Trouble Shooting
-<br><br>
-### 바이러스 토탈에 등록되지 않은 URL일경우
-<br><br>
-### http로 URL인텐트 전달
-<br><br>
-### 서버 & 클라이언트
-<br><br><br>
+
 ## 관련 학습 내용
 ### URL 판별 알고리즘
 java에서 String에서 URL 추출하기
@@ -177,8 +179,16 @@ url.putExtra("url", "http://www.naver.com");
 - Requests.get() : 데이터 요청
 
 <br>
-데이터 값이 딕셔너리 형태로 저장되어있음. <br>
-데이터를 가공하여 키-값으로 출력하여 데이터 변수에 저장
+
+**데이터 요청**
+``` Python
+import requests 
+url = 'https://www.virustotal.com/vtapi/v2/url/report' 
+params = {'apikey': '<apikey>', 'resource':'<resource>'} 
+response = requests.get(url, params=params) 
+print(response.json())
+```
+
 <br><br>
 
 
