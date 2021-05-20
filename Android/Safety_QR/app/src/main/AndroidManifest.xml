@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:hardwareAccelerated="true">
-        <activity android:name=".IntroActivity"
+        <activity android:name=".activity.Intro_Activity"
             android:theme="@style/Theme.AppCompat">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,11 +29,12 @@
         <activity android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="fullSensor"
             tools:replace="screenOrientation"/>
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".Client"></activity>
-        <activity android:name=".ScanQR"></activity>
-        <activity android:name=".ScanResult"></activity>
-        <activity android:name=".SearchQR"></activity>
+        <activity android:name=".activity.Main_Activity"></activity>
+        <activity android:name=".infrastructure.Client"></activity>
+        <activity android:name=".infrastructure.ScanQR"></activity>
+        <activity android:name=".activity.ScanResult_Activity"></activity>
+        <activity android:name=".activity.SearchQR_Activity"></activity>
+        <activity android:name=".activity.History_Activity"></activity>
     </application>
 
 </manifest>

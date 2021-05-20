@@ -1,32 +1,25 @@
-package com.example.safety_qr;
+package com.example.safety_qr.activity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.service.autofill.FieldClassification;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-import java.net.URL;
+import com.example.safety_qr.R;
+import com.example.safety_qr.infrastructure.Client;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class SearchQR extends AppCompatActivity {
+public class SearchQR_Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-        //ActionBar actionBar = getSupportActionBar();
-        //actionBar.hide();
-
 
     }
 
@@ -68,8 +61,10 @@ public class SearchQR extends AppCompatActivity {
             set_url.setText(URL);
 
             //Client.class 인텐트 넘겨줌
+            //Intent url = new Intent(this, ScanResult_Activity.class);
             Intent url = new Intent(this, Client.class);
             url.putExtra("url", URL);
+            //url.putExtra("result", 0);
             startActivity(url);
             finish();
         }

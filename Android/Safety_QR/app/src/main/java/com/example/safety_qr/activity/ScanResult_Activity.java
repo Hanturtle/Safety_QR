@@ -1,4 +1,4 @@
-package com.example.safety_qr;
+package com.example.safety_qr.activity;
 
 
 import android.content.Intent;
@@ -12,8 +12,19 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.safety_qr.R;
+import com.example.safety_qr.infrastructure.ScanQR;
+import com.example.safety_qr.domain.History;
+import com.example.safety_qr.infrastructure.SQLiteHelper;
 
-public class ScanResult extends AppCompatActivity {
+import java.util.List;
+
+
+public class ScanResult_Activity extends AppCompatActivity {
+
+    SQLiteHelper dbHelper;
+    List<History> history;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -28,17 +39,21 @@ public class ScanResult extends AppCompatActivity {
         Button ok_button = (Button)findViewById(R.id.ok_button);
 
 
-        //url 가져옴
         Intent urlIntent = getIntent();
-        // 1, 0 악성유무값 받아옴
         final int percent = urlIntent.getIntExtra("result", 1);
         final String url = urlIntent.getStringExtra("url");
         //final String url = "http://198.23.207.82/mad/men.exe";
         urltextView.setText(url);
 
-        //여기에 % 값 넘겨주는 변수 percent에 초기화해주세요..
-        //Intent intent = new Intent();
-       // detailtextView.setText(percent);
+        // <--- DB --->
+        dbHelper = new SQLiteHelper(ScanResult_Activity.this);
+        // 악성 유무값 toString
+        String result = Integer.toString(percent);
+        History history = new History(url, result);
+        // DB insert
+        dbHelper.insertHistory(history);
+        // <-- DB END -- >
+
 
         if(percent != 0){  //악성이라면
             //배경 레드
@@ -91,6 +106,7 @@ public class ScanResult extends AppCompatActivity {
         Intent intent = new Intent(this, ScanQR.class);
         startActivity(intent);
         finish();
+
     }
 
 }

@@ -1,4 +1,4 @@
-package com.example.safety_qr;
+package com.example.safety_qr.infrastructure;
 
 import com.journeyapps.barcodescanner.CaptureActivity;
 

@@ -1,12 +1,13 @@
-package com.example.safety_qr;
+package com.example.safety_qr.infrastructure;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.safety_qr.R;
+import com.example.safety_qr.infrastructure.Client;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 

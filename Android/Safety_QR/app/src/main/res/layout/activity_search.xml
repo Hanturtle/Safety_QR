@@ -9,7 +9,8 @@
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="237dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nixgon"
         android:gravity="center"
         android:paddingTop="150dp"
         android:text="검색할 URL을 입력하세요."
@@ -25,20 +26,20 @@
 
         <EditText
             android:id="@+id/url_input"
-            android:layout_width="696dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="#ffffffff"
             android:ems="10"
             android:inputType="textUri"
             android:paddingTop="20dp"
-            android:backgroundTint="#ffffffff"
             android:textColor="#ffffffff" />
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="59dp"
-            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="6"
             android:onClick="Search_URL"
             app:srcCompat="@drawable/search" />
 

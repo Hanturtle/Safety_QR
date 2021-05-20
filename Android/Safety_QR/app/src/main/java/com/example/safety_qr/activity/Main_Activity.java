@@ -1,25 +1,17 @@
-package com.example.safety_qr;
+package com.example.safety_qr.activity;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 
-import java.io.Closeable;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.net.Socket;
-import java.net.UnknownHostException;
+import com.example.safety_qr.R;
+import com.example.safety_qr.infrastructure.ScanQR;
+import com.example.safety_qr.infrastructure.Client;
 
 
-public class MainActivity extends AppCompatActivity {
+public class Main_Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goSearch(View view) {
-        Intent intent = new Intent(this, SearchQR.class);
+        Intent intent = new Intent(this, SearchQR_Activity.class);
         startActivity(intent);
     }
 
@@ -44,5 +36,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void goHistory(View view) {
+        Intent intent = new Intent(this, History_Activity.class);
+        startActivity(intent);
+    }
 
 }

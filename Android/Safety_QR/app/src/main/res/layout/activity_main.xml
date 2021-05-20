@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".activity.Main_Activity">
 
     <LinearLayout
 
@@ -74,6 +74,7 @@
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="false"
                 android:background="#00000000"
+                android:onClick="goHistory"
                 android:rotation="0"
                 android:rotationX="0"
                 android:scaleType="centerCrop"

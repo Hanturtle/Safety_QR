@@ -1,15 +1,13 @@
-package com.example.safety_qr;
+package com.example.safety_qr.infrastructure;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.StrictMode;
 import android.util.Log;
-import android.view.View;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.safety_qr.activity.ScanResult_Activity;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -26,8 +24,8 @@ public class Client extends AppCompatActivity {
     private DataOutputStream dos;
     private DataInputStream dis;
 
-    //private String ip = "192.168.0.6";
-    private String ip = "172.20.10.3";
+    private String ip = "192.168.0.6";
+    //private String ip = "172.20.10.3";
     private int port = 8080;
     int result;
     @Override
@@ -41,7 +39,7 @@ public class Client extends AppCompatActivity {
     }
 
     public void ScanResult(String url) {
-        Intent intent = new Intent(this, ScanResult.class);
+        Intent intent = new Intent(this, ScanResult_Activity.class);
         intent.putExtra("url", url);
         intent.putExtra("result", result);
         startActivity(intent);
