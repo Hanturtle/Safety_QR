@@ -3,6 +3,7 @@ package com.example.safety_qr.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.icu.text.IDNA;
 import android.os.Bundle;
 import android.view.View;
 
@@ -38,6 +39,11 @@ public class Main_Activity extends AppCompatActivity {
 
     public void goHistory(View view) {
         Intent intent = new Intent(this, History_Activity.class);
+        startActivity(intent);
+    }
+
+    public void goInfo(View view) {
+        Intent intent = new Intent(this, Info_Activity.class);
         startActivity(intent);
     }
 

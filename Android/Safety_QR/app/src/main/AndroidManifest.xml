@@ -35,6 +35,7 @@
         <activity android:name=".activity.ScanResult_Activity"></activity>
         <activity android:name=".activity.SearchQR_Activity"></activity>
         <activity android:name=".activity.History_Activity"></activity>
+        <activity android:name=".activity.Info_Activity"></activity>
     </application>
 
 </manifest>

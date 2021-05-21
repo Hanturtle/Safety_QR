@@ -24,8 +24,8 @@ public class Client extends AppCompatActivity {
     private DataOutputStream dos;
     private DataInputStream dis;
 
-    private String ip = "192.168.0.6";
-    //private String ip = "172.20.10.3";
+    //private String ip = "192.168.0.6";
+    private String ip = "172.20.10.3";
     private int port = 8080;
     int result;
     @Override

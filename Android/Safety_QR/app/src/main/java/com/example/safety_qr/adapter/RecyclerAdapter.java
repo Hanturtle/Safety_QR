@@ -3,6 +3,7 @@ package com.example.safety_qr.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,7 +21,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
     class ItemViewHolder extends RecyclerView.ViewHolder{
 
         private final TextView url;
-        private TextView result;
+        private ImageView result;
 
         public ItemViewHolder(@NonNull View itemView){
             super(itemView);
@@ -60,9 +61,12 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
 
 
         itemViewHolder.url.setText(history.getUrl());
-        itemViewHolder.result.setText(history.getResult());
-
-
+        if(Integer.parseInt(history.getResult()) == 0){
+            itemViewHolder.result.setImageResource(R.drawable.green_mark);
+        }
+        else {
+            itemViewHolder.result.setImageResource(R.drawable.red_mark);
+        }
 
     }
     void addItem(History history) {
