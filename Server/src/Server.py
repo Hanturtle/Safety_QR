@@ -44,16 +44,17 @@ while True:
         # 데이터 전송
         data = check(recv_data)
         try:
-            malicious = data['positives']
-            total = data['total']
+            malicious = str(data['positives'])
+            total = str(data['total'])
+            answer = malicious+'/'+total
         except KeyError:
-            malicious = 999
-            total = 999
+            malicious = str(-1)
+            total = str(-1)
+            answer = malicious+'/'+total
+        
        
-        group[0].send(malicious.to_bytes(4, byteorder='little'))
-        print("악성: ", malicious)
-        group[0].send(total.to_bytes(4, byteorder='little'))
-        print("전체: ", total)
+        group[0].send(answer.encode("utf-8"))
+        print("악성: ", answer)
         # 소켓 종료
         group[0].close()
         # 클라이언트 삭제

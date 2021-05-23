@@ -64,8 +64,6 @@ public class SQLiteHelper {
         db.execSQL(sql);
     }
 
-
-
     // DELETE FROM MemoTable WHERE seq = 0;
     public void deleteMemo(int seq){
         String sql = "DELETE FROM "+table1+" WHERE num = "+seq+";";

@@ -1,6 +1,7 @@
 package com.example.safety_qr.infrastructure;
 
 import android.content.Intent;
+import android.icu.text.SymbolTable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -9,10 +10,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.safety_qr.activity.ScanResult_Activity;
 
+import java.io.BufferedInputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.util.Scanner;
 
 public class Client extends AppCompatActivity {
 
@@ -24,10 +29,11 @@ public class Client extends AppCompatActivity {
     private DataOutputStream dos;
     private DataInputStream dis;
 
-    //private String ip = "192.168.0.6";
-    private String ip = "172.20.10.3";
-    private int port = 8080;
-    int result;
+    private final String ip = "192.168.0.6";
+    //private String ip = "172.20.10.3";
+    private final int port = 8080;
+    //int total, malicious;
+    String malicious = "", total = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,8 +47,26 @@ public class Client extends AppCompatActivity {
     public void ScanResult(String url) {
         Intent intent = new Intent(this, ScanResult_Activity.class);
         intent.putExtra("url", url);
-        intent.putExtra("result", result);
+        intent.putExtra("malicious", Integer.parseInt(malicious));
+        intent.putExtra("total", Integer.parseInt(total));
         startActivity(intent);
+    }
+
+    public void result(String msg){
+        msg = msg.trim();
+        for (int i = 0; i < msg.length(); i++){
+            if (msg.charAt(i) == '/'){
+                malicious = msg.substring(0, i);
+                total = msg.substring(i+1, msg.length());
+                break;
+            }
+            else if (msg.charAt(i) == '-'){
+                malicious = "-1";
+                total = "-1";
+                break;
+            }
+        }
+        //System.out.println("최종 : " + malicious + " " + total);
     }
 
 
@@ -65,7 +89,9 @@ public class Client extends AppCompatActivity {
                 try {
                     dos = new DataOutputStream(socket.getOutputStream());
                     dis = new DataInputStream(socket.getInputStream());
+
                     dos.writeUTF(url);
+
                     // url 넘겨줌
                 } catch (IOException e){
                     e.printStackTrace();
@@ -76,9 +102,11 @@ public class Client extends AppCompatActivity {
 
                     try {
                         //통신 성공
-                        result = (int)dis.read();
-                        System.out.println(result);
-                        Log.w("서버에서 받아온 값","" + result);
+                        byte[] messageByte = new byte[5];
+                        dis.read(messageByte, 0, 5);
+                        Log.w("서버에서 값 받아","");
+                        String msg = new String(messageByte, "UTF-8");
+                        result(msg);
                         //ScanResult로 값 넘겨줌
                         ScanResult(url);
                     } catch (IOException e){

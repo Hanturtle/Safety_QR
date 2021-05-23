@@ -4,6 +4,7 @@ package com.example.safety_qr.activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -38,24 +39,25 @@ public class ScanResult_Activity extends AppCompatActivity {
         Button cancle_button = findViewById(R.id.ok_button);
         Button ok_button = (Button)findViewById(R.id.ok_button);
 
-
         Intent urlIntent = getIntent();
-        final int percent = urlIntent.getIntExtra("result", 1);
+        // **** 악성 : malicious // 백신 수 : total
+        final int malicious = urlIntent.getIntExtra("malicious", 1);
+        final int total = urlIntent.getIntExtra("total", 1);
         final String url = urlIntent.getStringExtra("url");
         //final String url = "http://198.23.207.82/mad/men.exe";
+        Log.w("ScanResult", "ScanResult " + malicious +" " + total);
         urltextView.setText(url);
 
         // <--- DB --->
         dbHelper = new SQLiteHelper(ScanResult_Activity.this);
         // 악성 유무값 toString
-        String result = Integer.toString(percent);
+        String result = Integer.toString(malicious);
         History history = new History(url, result);
         // DB insert
         dbHelper.insertHistory(history);
         // <-- DB END -- >
 
-
-        if(percent != 0){  //악성이라면
+        if(malicious != 0){  //악성이라면
             //배경 레드
             //backGround.setBackgroundColor(0xffff0000);
             urltextView.setBackgroundColor(0xffe84c3d);
