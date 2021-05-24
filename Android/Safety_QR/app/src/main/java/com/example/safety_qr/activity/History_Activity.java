@@ -1,5 +1,6 @@
 package com.example.safety_qr.activity;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,7 +42,7 @@ public class History_Activity extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
 
 
-        recyclerAdapter = new RecyclerAdapter(history);
+        recyclerAdapter = new RecyclerAdapter(history, this);
         recyclerView.setAdapter(recyclerAdapter);
         recyclerAdapter.notifyDataSetChanged();
         //recyclerAdapter.addItem(history);
