@@ -43,7 +43,7 @@ public class SQLiteHelper {
         @Override
         public void onCreate(SQLiteDatabase sqLiteDatabase) {
             String create = "CREATE TABLE "+ table1 + "(" +
-                    //"'num' integer PRIMARY KEY AUTOINCREMENT, "+
+                    "'id' integer PRIMARY KEY AUTOINCREMENT, "+
                     "'url' text,"+
                     "'result' text)";
             sqLiteDatabase.execSQL(create);
@@ -58,21 +58,51 @@ public class SQLiteHelper {
     }
 
     public void insertHistory(History history){
-
-        String sql = "INSERT INTO "+table1+" VALUES('"+history.url+"','"+history.result+"');";
+        db = opener.getWritableDatabase();
+        //String sql = "INSERT INTO "+table1+" VALUES('"+history.url+"','"+history.result+"');";
+        String sql = "INSERT INTO HistoryTB (url, result) VALUES('" + history.url + "', '" + history.result + "');";
 
         db.execSQL(sql);
     }
+
+
 
     // DELETE FROM MemoTable WHERE seq = 0;
-    public void deleteMemo(int seq){
-        String sql = "DELETE FROM "+table1+" WHERE num = "+seq+";";
+    public void deleteHistory(int seq){
+
+        String sql = "DELETE FROM "+table1+" WHERE id = "+seq+";";
         db.execSQL(sql);
 
     }
 
-    // SELECT * FROM MemoTable;
+    // SELECT * FROM HistoryTB
+    public ArrayList<History> selectALL(){
+        ArrayList<History> historyItems = new ArrayList<>();
 
+        db = opener.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM HistoryTB ORDER BY id DESC", null);
+        if(cursor.getCount()!=0){
+            while(cursor.moveToNext()){
+                int id = cursor.getInt(cursor.getColumnIndex("id"));
+                String url = cursor.getString(cursor.getColumnIndex("url"));
+                String result = cursor.getString(cursor.getColumnIndex("result"));
+
+                History history = new History(url, result);
+                history.setId(id);
+                history.setUrl(url);
+                history.setResult(result);
+                historyItems.add(history);
+
+            }
+        }
+        cursor.close();
+
+        return historyItems;
+    }
+
+
+    // SELECT * FROM MemoTable;
+/*
     public ArrayList<History> selectALL(){
         String sql = "SELECT * FROM "+table1;
         ArrayList<History> list = new ArrayList<>();
@@ -91,7 +121,7 @@ public class SQLiteHelper {
 
         return list;
     }
-
+*/
 
 
 }
