@@ -26,6 +26,17 @@ public class ScanResult_Activity extends AppCompatActivity {
     SQLiteHelper dbHelper;
     List<History> history;
 
+    Intent urlIntent = getIntent();
+    // **** 악성 : malicious // 백신 수 : total
+    final int malicious = urlIntent.getIntExtra("malicious", 1);
+    final int total = urlIntent.getIntExtra("total", 1);
+    final String url = urlIntent.getStringExtra("url");
+
+    //test
+    //int malicious = 55;
+    //int total = 88;
+    //String url = "https://www.virustotal.com/gui/url/d60cc9ad2c74086fee11b5194f90c9c7dc4dafdbc42153cc915e4fb98a9bad11/details";
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -39,11 +50,11 @@ public class ScanResult_Activity extends AppCompatActivity {
         Button cancle_button = findViewById(R.id.ok_button);
         Button ok_button = (Button)findViewById(R.id.ok_button);
 
-        Intent urlIntent = getIntent();
+        /*Intent urlIntent = getIntent();
         // **** 악성 : malicious // 백신 수 : total
         final int malicious = urlIntent.getIntExtra("malicious", 1);
         final int total = urlIntent.getIntExtra("total", 1);
-        final String url = urlIntent.getStringExtra("url");
+        final String url = urlIntent.getStringExtra("url");*/
         //final String url = "http://198.23.207.82/mad/men.exe";
         Log.w("ScanResult", "ScanResult " + malicious +" " + total);
         urltextView.setText(url);
@@ -57,7 +68,40 @@ public class ScanResult_Activity extends AppCompatActivity {
         dbHelper.insertHistory(history);
         // <-- DB END -- >
 
-        if(malicious != 0){  //악성이라면
+
+
+
+
+        if(malicious == -1){  //한번도 검색되지 않은 사이트라면
+            //배경 회색
+            urltextView.setBackgroundColor(0xe0e0e0);
+            //check_textView '안전한 url 입니다.'
+            checktextView.setText("한번도 등록되지 않은 URL 입니다.");
+
+            //mark == green
+            imageView.setImageResource(R.drawable.gray_mark);
+
+
+            //접속 버튼 눌렀을때 해당 액션 작동
+            ok_button.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view){
+                    if(!url.contains("http")){
+                        String http = "http://";
+                        http = http.concat(url);
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(http));
+                        startActivity(intent);
+                    }
+                    else{
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                        startActivity(intent);
+                    } finish();
+
+                }
+            });
+        }
+
+        else if(malicious != 0){  //악성이라면
             //배경 레드
             //backGround.setBackgroundColor(0xffff0000);
             urltextView.setBackgroundColor(0xffe84c3d);
@@ -65,8 +109,18 @@ public class ScanResult_Activity extends AppCompatActivity {
             checktextView.setText("악성 URL 입니다.");
 
             //확인 버튼 숨기기
-            cancle_button.setVisibility(View.GONE);
-
+            //cancle_button.setVisibility(View.GONE);
+            cancle_button.setText("Pro version");
+            /*cancle_button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(this, Detail_Activity.class);
+                    intent.putExtra("malicious", malicious);
+                    intent.putExtra("total", total);
+                    intent.putExtra("url",url);
+                    startActivity(intent);
+                }
+            });*/
             //mark == red
             imageView.setImageResource(R.drawable.red_mark);
 
@@ -82,6 +136,7 @@ public class ScanResult_Activity extends AppCompatActivity {
 
             //mark == green
             imageView.setImageResource(R.drawable.green_mark);
+
 
             //접속 버튼 눌렀을때 해당 액션 작동
             ok_button.setOnClickListener(new View.OnClickListener(){
@@ -105,10 +160,18 @@ public class ScanResult_Activity extends AppCompatActivity {
     }
 
     public void Cancle(View view) {
-        Intent intent = new Intent(this, ScanQR.class);
-        startActivity(intent);
+        //Intent intent = new Intent(this, ScanQR.class);
+        //startActivity(intent);
         finish();
 
+    }
+
+    public void Detail(View view){
+        Intent intent = new Intent(this, Detail_Activity.class);
+        intent.putExtra("malicious", malicious);
+        intent.putExtra("total", total);
+        intent.putExtra("url",url);
+        startActivity(intent);
     }
 
 }

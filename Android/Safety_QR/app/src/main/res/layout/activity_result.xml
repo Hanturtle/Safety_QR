@@ -41,6 +41,7 @@
                 android:text="url"
                 android:textColor="#ffffffff"
                 android:textSize="28sp" />
+
         </LinearLayout>
     </LinearLayout>
 
@@ -85,6 +86,7 @@
                 android:layout_marginRight="15dp"
                 android:layout_weight="1"
                 android:background="#ff3598db"
+                android:onClick="Detail"
                 android:text="ok"
                 android:textColor="#ffffffff" />
 
@@ -100,6 +102,7 @@
                 android:text="cancle"
                 android:textColor="#ffffffff" />
         </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>
