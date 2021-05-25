@@ -15,6 +15,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.net.URL;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.Scanner;
@@ -33,7 +34,7 @@ public class Client extends AppCompatActivity {
     //private String ip = "172.20.10.3";
     private final int port = 8080;
     //int total, malicious;
-    String malicious = "", total = "";
+    String malicious = "", total = "", VTUrl= "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +48,7 @@ public class Client extends AppCompatActivity {
     public void ScanResult(String url) {
         Intent intent = new Intent(this, ScanResult_Activity.class);
         intent.putExtra("url", url);
+        intent.putExtra("VTUrl", VTUrl);
         intent.putExtra("malicious", Integer.parseInt(malicious));
         intent.putExtra("total", Integer.parseInt(total));
         startActivity(intent);
@@ -54,10 +56,12 @@ public class Client extends AppCompatActivity {
 
     public void result(String msg){
         msg = msg.trim();
+        System.out.println(msg);
         for (int i = 0; i < msg.length(); i++){
             if (msg.charAt(i) == '/'){
                 malicious = msg.substring(0, i);
-                total = msg.substring(i+1, msg.length());
+                total = msg.substring(i+1, i+3);
+                VTUrl = msg.substring(i+4, msg.length());
                 break;
             }
             else if (msg.charAt(i) == '-'){
@@ -66,7 +70,7 @@ public class Client extends AppCompatActivity {
                 break;
             }
         }
-        //System.out.println("최종 : " + malicious + " " + total);
+        System.out.println("최종 : " + malicious + " " + total + " " + VTUrl);
     }
 
 
@@ -102,9 +106,9 @@ public class Client extends AppCompatActivity {
 
                     try {
                         //통신 성공
-                        byte[] messageByte = new byte[5];
-                        dis.read(messageByte, 0, 5);
-                        Log.w("서버에서 값 받아","");
+                        byte[] messageByte = new byte[200];
+                        dis.read(messageByte, 0, 200);
+                        Log.w("서버에서 값 받아옴","");
                         String msg = new String(messageByte, "UTF-8");
                         result(msg);
                         //ScanResult로 값 넘겨줌

@@ -17,3 +17,9 @@
                             등록되지 않은 url -> malicious = -1 / total = -1
                             ** 위 조건들에 따른 if문 수정필요 **
             - (60 line) if 조건문을 malicious로 수정
+
+5 / 26
+    ksy
+    
+    - UI 디자인 수정
+    - virustotal/detail uri 연결

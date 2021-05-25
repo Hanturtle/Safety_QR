@@ -26,11 +26,8 @@ public class ScanResult_Activity extends AppCompatActivity {
     SQLiteHelper dbHelper;
     List<History> history;
 
-    Intent urlIntent = getIntent();
-    // **** 악성 : malicious // 백신 수 : total
-    final int malicious = urlIntent.getIntExtra("malicious", 1);
-    final int total = urlIntent.getIntExtra("total", 1);
-    final String url = urlIntent.getStringExtra("url");
+    int malicious, total;
+    String VTUrl, url;
 
     //test
     //int malicious = 55;
@@ -49,6 +46,13 @@ public class ScanResult_Activity extends AppCompatActivity {
         ImageView imageView = findViewById(R.id.markImgView);
         Button cancle_button = findViewById(R.id.ok_button);
         Button ok_button = (Button)findViewById(R.id.ok_button);
+
+        Intent urlIntent = getIntent();
+        // **** 악성 : malicious // 백신 수 : total
+        malicious = urlIntent.getIntExtra("malicious", 1);
+        total = urlIntent.getIntExtra("total", 1);
+        VTUrl = urlIntent.getStringExtra("VTUrl");
+        url = urlIntent.getStringExtra("url");
 
         /*Intent urlIntent = getIntent();
         // **** 악성 : malicious // 백신 수 : total
@@ -76,6 +80,7 @@ public class ScanResult_Activity extends AppCompatActivity {
             //배경 회색
             urltextView.setBackgroundColor(0xe0e0e0);
             //check_textView '안전한 url 입니다.'
+            checktextView.setTextSize(25);
             checktextView.setText("한번도 등록되지 않은 URL 입니다.");
 
             //mark == green
@@ -168,6 +173,7 @@ public class ScanResult_Activity extends AppCompatActivity {
 
     public void Detail(View view){
         Intent intent = new Intent(this, Detail_Activity.class);
+        intent.putExtra("VTUrl", VTUrl);
         intent.putExtra("malicious", malicious);
         intent.putExtra("total", total);
         intent.putExtra("url",url);

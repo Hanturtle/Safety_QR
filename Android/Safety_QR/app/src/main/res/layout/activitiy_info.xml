@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20sp"
         android:layout_marginLeft="20sp"
-        android:layout_marginTop="30sp"
+        android:layout_marginTop="50sp"
         android:fontFamily="@font/nixgon"
         android:text="Info"
         android:textColor="#FFFFFF"

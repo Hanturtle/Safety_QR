@@ -6,7 +6,7 @@ import time
 #------------------------------------검사----------------------------------
 def check(recv_data):
 
-    url = 'https://www.virustotal.com/vtapi/v2/url/report'  
+    url = 'https://www.virustotal.com/vtapi/v2/url/report'
     mykey = '5b515349e942c36fdb06b793b6fe2f7f0841926a181db41654e996046d0e745c'
 
     check_data = ""
@@ -46,7 +46,9 @@ while True:
         try:
             malicious = str(data['positives'])
             total = str(data['total'])
-            answer = malicious+'/'+total
+            id = data['scan_id'].split('-')[0]
+            send_url = "https://www.virustotal.com/gui/url/{}/details".format(id)
+            answer = malicious+'/'+total+'/'+send_url
         except KeyError:
             malicious = str(-1)
             total = str(-1)

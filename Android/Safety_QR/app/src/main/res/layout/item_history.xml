@@ -23,7 +23,7 @@
             android:fontFamily="@font/nixgon"
             android:gravity="center_vertical"
             android:textColor="#FFFFFF"
-            android:textSize="25sp" />
+            android:textSize="20sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -43,7 +43,11 @@
                 android:layout_marginStart="5sp"
                 android:layout_marginLeft="5sp"
                 android:layout_marginEnd="5sp"
-                android:layout_marginRight="5sp" />
+                android:layout_marginRight="5sp"
+                android:layout_marginBottom="5sp"
+                android:background="#ff3598db"
+                android:text="접속"
+                android:textColor="#FFFFFF" />
         </LinearLayout>
     </LinearLayout>
 

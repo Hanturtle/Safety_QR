@@ -43,7 +43,7 @@ public class Main_Activity extends AppCompatActivity {
     }
 
     public void goInfo(View view) {
-        Intent intent = new Intent(this, Intro_Activity.class);
+        Intent intent = new Intent(this, Info_Activity.class);
         startActivity(intent);
     }
 

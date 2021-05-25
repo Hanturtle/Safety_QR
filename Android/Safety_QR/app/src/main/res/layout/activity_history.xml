@@ -2,14 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#17375e"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:background="#ff17375e"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="10dp">
 
         <TextView
             android:id="@+id/textView2"
@@ -17,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20sp"
             android:layout_marginLeft="20sp"
-            android:layout_marginTop="30sp"
+            android:layout_marginTop="50sp"
             android:fontFamily="@font/nixgon"
             android:text="History"
             android:textColor="#FFFFFF"
@@ -27,13 +28,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="5"
-        android:orientation="vertical">
+        android:background="#17375e"
+        android:orientation="vertical"
+        android:paddingTop="10dp">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="#17375e" />
     </LinearLayout>
 </LinearLayout>
