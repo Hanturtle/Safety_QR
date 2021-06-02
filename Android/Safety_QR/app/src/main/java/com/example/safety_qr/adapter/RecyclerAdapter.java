@@ -29,6 +29,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
 
         private final TextView url;
         private ImageView result;
+        private Button button;
         // Button
         private Button item_button;
 
@@ -106,6 +107,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
         }
         else {
             itemViewHolder.result.setImageResource(R.drawable.red_mark);
+            itemViewHolder.button.setVisibility(View.GONE);
         }
 
 
