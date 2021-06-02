@@ -11,9 +11,16 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20sp"
         android:layout_marginLeft="20sp"
-        android:layout_marginTop="50sp"
+        android:layout_marginTop="30sp"
         android:fontFamily="@font/nixgon"
         android:text="Info"
         android:textColor="#FFFFFF"
         android:textSize="36sp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/info" />
+
 </LinearLayout>

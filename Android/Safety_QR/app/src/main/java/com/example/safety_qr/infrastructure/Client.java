@@ -30,8 +30,8 @@ public class Client extends AppCompatActivity {
     private DataOutputStream dos;
     private DataInputStream dis;
 
-    private final String ip = "192.168.0.6";
-    //private String ip = "172.20.10.3";
+    //private final String ip = "192.168.0.6";
+    private String ip = "172.20.10.3";
     private final int port = 8080;
     //int total, malicious;
     String malicious = "", total = "", VTUrl= "";

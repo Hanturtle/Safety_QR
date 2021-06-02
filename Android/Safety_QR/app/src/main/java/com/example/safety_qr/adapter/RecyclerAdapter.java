@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,17 +24,21 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
     public List<History> historyList;
     SQLiteHelper dbHelper;
     Context mContext;
-
+    //Button item_button = (Button)findViewById(R.id.item_button);
     class ItemViewHolder extends RecyclerView.ViewHolder{
 
         private final TextView url;
         private ImageView result;
+        // Button
+        private Button item_button;
 
         public ItemViewHolder(@NonNull View itemView){
             super(itemView);
 
             url = itemView.findViewById(R.id.item_url);
             result = itemView.findViewById(R.id.item_result);
+            // Button
+            item_button = itemView.findViewById(R.id.item_button);
 
             // DB 삭제
             itemView.setOnClickListener(new View.OnClickListener(){
@@ -97,10 +102,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
         itemViewHolder.url.setText(history.getUrl());
         if(Integer.parseInt(history.getResult()) == 0){
             itemViewHolder.result.setImageResource(R.drawable.green_mark);
+
         }
         else {
             itemViewHolder.result.setImageResource(R.drawable.red_mark);
         }
+
+
 
     }
     void addItem(History history) {
