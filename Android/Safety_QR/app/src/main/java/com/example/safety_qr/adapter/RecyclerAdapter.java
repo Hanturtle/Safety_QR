@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +29,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
 
         private final TextView url;
         private ImageView result;
+        private Button button;
 
         public ItemViewHolder(@NonNull View itemView){
             super(itemView);
@@ -100,6 +102,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
         }
         else {
             itemViewHolder.result.setImageResource(R.drawable.red_mark);
+            itemViewHolder.button.setVisibility(View.GONE);
         }
 
     }
