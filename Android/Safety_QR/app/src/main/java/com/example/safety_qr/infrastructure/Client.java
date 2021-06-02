@@ -31,7 +31,8 @@ public class Client extends AppCompatActivity {
     private DataInputStream dis;
 
     //private final String ip = "192.168.0.6";
-    private String ip = "172.20.10.3";
+      private final String ip = "172.20.10.3";
+//    private final String ip = "172.21.111.158";
     private final int port = 8080;
     //int total, malicious;
     String malicious = "", total = "", VTUrl= "";
@@ -93,7 +94,6 @@ public class Client extends AppCompatActivity {
                 try {
                     dos = new DataOutputStream(socket.getOutputStream());
                     dis = new DataInputStream(socket.getInputStream());
-
                     dos.writeUTF(url);
 
                     // url 넘겨줌

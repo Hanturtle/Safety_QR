@@ -31,15 +31,16 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
         private ImageView result;
         private Button button;
         // Button
-        private Button item_button;
+
 
         public ItemViewHolder(@NonNull View itemView){
             super(itemView);
 
             url = itemView.findViewById(R.id.item_url);
             result = itemView.findViewById(R.id.item_result);
+            button = itemView.findViewById(R.id.button);
             // Button
-            item_button = itemView.findViewById(R.id.item_button);
+//            item_button = itemView.findViewById(R.id.item_button);
 
             // DB 삭제
             itemView.setOnClickListener(new View.OnClickListener(){
@@ -107,7 +108,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
         }
         else {
             itemViewHolder.result.setImageResource(R.drawable.red_mark);
-            itemViewHolder.button.setVisibility(View.GONE);
+            itemViewHolder.button.setEnabled(false);
+            itemViewHolder.button.setBackgroundColor(0xFFe0e0e0);
+            itemViewHolder.button.setTextColor(0xFF000000);
+
         }
 
 

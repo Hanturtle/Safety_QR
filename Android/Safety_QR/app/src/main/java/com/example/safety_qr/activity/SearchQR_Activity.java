@@ -61,10 +61,8 @@ public class SearchQR_Activity extends AppCompatActivity {
             set_url.setText(URL);
 
             //Client.class 인텐트 넘겨줌
-            //Intent url = new Intent(this, ScanResult_Activity.class);
             Intent url = new Intent(this, Client.class);
             url.putExtra("url", URL);
-            //url.putExtra("result", 0);
             startActivity(url);
             finish();
         }

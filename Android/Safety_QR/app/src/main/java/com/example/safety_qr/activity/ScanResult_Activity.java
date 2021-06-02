@@ -29,23 +29,17 @@ public class ScanResult_Activity extends AppCompatActivity {
     int malicious, total;
     String VTUrl, url;
 
-    //test
-    //int malicious = 55;
-    //int total = 88;
-    //String url = "https://www.virustotal.com/gui/url/d60cc9ad2c74086fee11b5194f90c9c7dc4dafdbc42153cc915e4fb98a9bad11/details";
-
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
-        //TextView detailtextView = findViewById(R.id.detail_textView);
         TextView checktextView = findViewById(R.id.check_textView);
         TextView urltextView = findViewById(R.id.url_textView);
         LinearLayout backGround = (LinearLayout) findViewById(R.id.qr_result);
         ImageView imageView = findViewById(R.id.markImgView);
-        Button cancle_button = findViewById(R.id.ok_button);
-        Button ok_button = (Button)findViewById(R.id.ok_button);
+        Button ok_button = findViewById(R.id.ok_button);
+        Button cancle_button = (Button)findViewById(R.id.cancle_button);
 
         Intent urlIntent = getIntent();
         // **** 악성 : malicious // 백신 수 : total
@@ -54,11 +48,7 @@ public class ScanResult_Activity extends AppCompatActivity {
         VTUrl = urlIntent.getStringExtra("VTUrl");
         url = urlIntent.getStringExtra("url");
 
-        /*Intent urlIntent = getIntent();
-        // **** 악성 : malicious // 백신 수 : total
-        final int malicious = urlIntent.getIntExtra("malicious", 1);
-        final int total = urlIntent.getIntExtra("total", 1);
-        final String url = urlIntent.getStringExtra("url");*/
+
         //final String url = "http://198.23.207.82/mad/men.exe";
         Log.w("ScanResult", "ScanResult " + malicious +" " + total);
         urltextView.setText(url);
@@ -68,13 +58,8 @@ public class ScanResult_Activity extends AppCompatActivity {
         // 악성 유무값 toString
         String result = Integer.toString(malicious);
         History history = new History(url, result);
-        // DB insert
         dbHelper.insertHistory(history);
         // <-- DB END -- >
-
-
-
-
 
         if(malicious == -1){  //한번도 검색되지 않은 사이트라면
             //배경 회색
@@ -113,20 +98,7 @@ public class ScanResult_Activity extends AppCompatActivity {
             //check_textView '악성 url 입니다.'
             checktextView.setText("악성 URL 입니다.");
 
-            //확인 버튼 숨기기
-            //cancle_button.setVisibility(View.GONE);
-            cancle_button.setText("Pro version");
-            /*cancle_button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(this, Detail_Activity.class);
-                    intent.putExtra("malicious", malicious);
-                    intent.putExtra("total", total);
-                    intent.putExtra("url",url);
-                    startActivity(intent);
-                }
-            });*/
-            //mark == red
+            ok_button.setText("Pro version");
             imageView.setImageResource(R.drawable.red_mark);
 
 
@@ -134,7 +106,6 @@ public class ScanResult_Activity extends AppCompatActivity {
         }
         else{   //안전한 url이라면
             //배경 그린
-            //backGround.setBackgroundColor(0xff00ff00);
             urltextView.setBackgroundColor(0xff27ae61);
             //check_textView '안전한 url 입니다.'
             checktextView.setText("안전한 URL 입니다.");
@@ -165,8 +136,6 @@ public class ScanResult_Activity extends AppCompatActivity {
     }
 
     public void Cancle(View view) {
-        //Intent intent = new Intent(this, ScanQR.class);
-        //startActivity(intent);
         finish();
 
     }
